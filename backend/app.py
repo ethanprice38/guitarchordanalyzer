@@ -7,11 +7,10 @@ CORS(app)
 
 chords = {
     'major': [0, 4, 7], # 0 is root, 4 is major 3rd, 7 is perfect 5th
-    'major 7': [0, 4, 7, 11],
+    'major 7': [[0, 4, 7, 11], [0, 4, 11]],
     'augmented': [0, 4, 8],
     '6': [0, 4, 9],
     'dominant 7': [0, 4, 10],
-    'major 7': [0, 4, 11],
     '(add 9)': [0, 2, 4],
     '(add 9)': [0, 2, 4, 7],
     'sus (add 9)': [0, 2, 5],
@@ -37,7 +36,7 @@ chords = {
 }
 
 all_notes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
-notes_to_numbers = {note:(index + 1) for index, note in enumerate(all_notes)}
+notes_to_numbers = {note: index for index, note in enumerate(all_notes)}
 # Assigns all notes a number starting at A (i.e A = 1, B = 3)
 
 def find_interval(root_note: str, note: str):
@@ -55,7 +54,7 @@ def analyze_all_intervals(*notes: str):
                 root_intervals.sort()
         intervals.append(root_intervals)
 
-    return intervals
+    return intervals # intervals is an array that contains arrays of intervals when each note in notes is considered the tonic
 
 @app.route('/analyze_chords', methods=['POST'])
 def analyze_chords():
