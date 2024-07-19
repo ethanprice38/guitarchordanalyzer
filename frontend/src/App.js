@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect, useRef} from 'react';
 import './App.css';
 import axios from 'axios';
 import InteractiveFretboard from './InteractiveFretboard';
 
 function App() {
-  const [inputValue, setInputValue] = useState('');
-  const [notes, setNotes] = useState([]);
   const [chords, setChords] = useState([]);
   const [frettedNotes, setFrettedNotes] = useState([])
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
+  const firstRenderRef = useRef(true);
 
   const handleAnalyzeChords = async () => {
     try {
@@ -22,15 +17,24 @@ function App() {
     }
   };
 
+
   const handleFretboardChanges = (updatedFretboardNotes) => {
     setFrettedNotes(updatedFretboardNotes)
   };
+
+  useEffect(() => {
+    if(firstRenderRef.current) {
+      firstRenderRef.current = false
+      return
+    }
+    handleAnalyzeChords();
+  }, [frettedNotes]);
 
   return (
     <div className="App">
       <h1>Guitar Chord Analyzer</h1>
       <div>
-        <button onClick={handleAnalyzeChords}>Analyze Chords</button>
+        
       </div>
       <div>
         <h2>Matching Chords:</h2>
