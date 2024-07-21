@@ -7,15 +7,16 @@ app = Flask(__name__)
 CORS(app)
 
 chords = {
-    'major': [[0, 4, 7]], # 0 is root, 4 is major 3rd, 7 is perfect 5th
+    'major': [[0, 4, 7]], # 0 is root, 4 is major 3rd, 7 is perfect 5th, 9 is 13th, 10 is dominant 7th, 11 is major 7th,
     'major 7': [[0, 4, 7, 11], [0, 4, 11]],
+    'major 13': [[0, 4, 7, 9, 11], [0, 4, 9], [0, 4, 9, 11]],
     'augmented': [[0, 4, 8]],
     '6': [[0, 4, 9]],
     'dominant 7': [[0, 4, 10]],
     '(add 9)': [[0, 2, 4], [0, 2, 4, 7]],
     'sus (add 9)': [[0, 2, 5]],
 
-    'minor': [[0, 3, 7]], # 0 is root, 3 is minor 3rd, 7 is perfect 5th
+    'minor': [[0, 3, 7]], # 3 is minor 3rd
     'minor (add 9)': [[0, 2, 3]],
     'minor (add 11)': [[0, 3, 5]],
     'dim': [[0, 3, 6]],
@@ -64,14 +65,21 @@ def analyze_chords():
     for current_interval, current_note in zip(intervals, notes):
         if current_note in used_notes:
             continue
+        chord_found = False
         for chord_name, chord_intervals_list in chords.items():
             for chord_intervals in chord_intervals_list:
                 if set(chord_intervals) == set(current_interval):
                     matching_chords.append(f"{current_note} {chord_name}")
                     used_notes.append(current_note)
-                #else:
-                    #find_chords_from_notes() # Need to provide chord name in the case it's not in my predefined list
-                   # used_notes.append(current_note)
+                    chord_found = True
+                    break
+                if chord_found:
+                    break
+                if not chord_found:
+                    best_guess_chord = find_chords_from_notes(notes)
+                    if best_guess_chord:
+                        matching_chords.append(f"Best guess: {best_guess_chord}")
+                        used_notes.append(current_note)
 
     return jsonify({'matching_chords': matching_chords})
 

@@ -16,8 +16,15 @@ function InteractiveFretboard({ className, onFretboardChanges }) {
   const fretWidth = 40;
   const stringSpacing = 20;
   const margin = 30;
-
   const [frettedPositions, setFrettedPositions] = useState({});
+
+  useEffect(() => {
+    const notes = Object.keys(frettedPositions).map((stringIndex) => {
+      const fretIndex = frettedPositions[stringIndex];
+      return getNote(openStrings[stringIndex], fretIndex);
+    });
+    onFretboardChanges(notes);
+  }, [frettedPositions, onFretboardChanges]);
 
   const handleFretClick = (stringIndex, fretIndex) => {
     setFrettedPositions(prevPositions => {
@@ -29,22 +36,14 @@ function InteractiveFretboard({ className, onFretboardChanges }) {
         ...prevPositions,
         [stringIndex]: fretIndex
       }
-    })
+    },
+  )
   };
-
-  useEffect(() => {
-    const notes = Object.keys(frettedPositions).map((stringIndex) => {
-      const fretIndex = frettedPositions[stringIndex]
-      return getNote(openStrings[stringIndex], fretIndex)
-    });
-    onFretboardChanges(notes)
-  }, [frettedPositions, onFretboardChanges]);
-
 
   return (
     <svg
       width={(frets * fretWidth) + (margin * 2)}
-      height={(strings) * stringSpacing + 20}
+      height={(strings) * stringSpacing + 40}
       style={{ border: 'none' }}
     >
       {/* Draw frets */}
@@ -58,6 +57,21 @@ function InteractiveFretboard({ className, onFretboardChanges }) {
           stroke="black"
           strokeWidth={1.5}
         />
+      ))}
+      {/*Draw fret numbers */}
+      {Array.from({length: frets + 1}).map((_,fretIndex) => (
+
+        <text
+        x={fretIndex * fretWidth + margin - 22}
+        y={strings * stringSpacing + margin + 4}
+        fontSize="12"
+        fontFamily='arial'
+        textAnchor="middle"
+        
+        >
+          {fretIndex}
+        </text>
+
       ))}
 
       {/* Draw strings */}
