@@ -62,25 +62,28 @@ def analyze_chords():
     intervals = analyze_all_intervals(*notes)
     matching_chords = []
     used_notes = []
-    for current_interval, current_note in zip(intervals, notes):
-        if current_note in used_notes:
+    for current_interval, current_tonic in zip(intervals, notes):
+        has_chords = False
+        if current_tonic in used_notes:
             continue
-        chord_found = False
         for chord_name, chord_intervals_list in chords.items():
             for chord_intervals in chord_intervals_list:
                 if set(chord_intervals) == set(current_interval):
-                    matching_chords.append(f"{current_note} {chord_name}")
-                    used_notes.append(current_note)
-                    chord_found = True
-                    break
-                if chord_found:
-                    break
-                if not chord_found:
-                    best_guess_chord = find_chords_from_notes(notes)
-                    if best_guess_chord:
-                        matching_chords.append(f"Best guess: {best_guess_chord}")
-                        used_notes.append(current_note)
-
+                    matching_chords.append(f"{current_tonic} {chord_name}")
+                    used_notes.append(current_tonic)
+                    has_chords = True
+        if not has_chords:
+                    guess_chord = ""
+                    other_notes = []
+                    for note in notes:
+                         if note != current_tonic:
+                              other_notes.append(note)
+                    if (len(other_notes) >= 2):
+                        guess_chord = find_chords_from_notes([current_tonic] + other_notes)
+                    if guess_chord:
+                        matching_chords.append(f"{current_tonic} {guess_chord}")
+                        used_notes.append(current_tonic)
+                    
     return jsonify({'matching_chords': matching_chords})
 
 if __name__ == '__main__':

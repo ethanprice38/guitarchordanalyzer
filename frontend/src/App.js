@@ -26,7 +26,7 @@ function App() {
       firstRenderRef.current = false;
       return;
     }
-    if (frettedNotes.length > 0) {
+    if (frettedNotes.length > 2) {
       handleAnalyzeChords(frettedNotes);
     }
   }, [frettedNotes]);
