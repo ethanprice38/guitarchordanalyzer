@@ -55,6 +55,14 @@ def analyze_all_intervals(*notes: str):
 
     return intervals # intervals is an array that contains arrays of intervals when each note in notes is considered the tonic
 
+def find_chords_from_notes(notes):
+     try:
+          chord_obj = Chord(notes)
+          return str(chord_obj)
+     except:
+          return None
+
+
 @app.route('/analyze_chords', methods=['POST'])
 def analyze_chords():
     data = request.get_json()
