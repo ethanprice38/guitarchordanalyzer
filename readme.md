@@ -29,7 +29,7 @@ Run these two commands while your venv is activated:\
 Navigate to the frontend and run the following commands:\
 `cd ./frontend`\
 `npm install`\
-`npm start`\
+`npm start`
 
 Open your browser and go to http://localhost:3000 to interact with the guitar chord analyzer. Enjoy!
 
