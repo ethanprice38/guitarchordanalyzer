@@ -32,19 +32,21 @@ function App() {
   }, [frettedNotes]);
 
   return (
-    <div className="App">
-      <h1>Guitar Chord Analyzer</h1>
-      <div>
-        <InteractiveFretboard className="fretboard" onFretboardChanges={handleFretboardChanges}/>
+    <div style={{backgroundColor: '#1B1B1B'}}>
+      <div className="App">
+        <h1 style={{fontFamily: 'Roboto', color: 'whitesmoke'}}>Guitar Chord Analyzer</h1>
+        <div>
+          <InteractiveFretboard className="fretboard" onFretboardChanges={handleFretboardChanges}/>
+        </div>
+        <div style={{marginTop: '20px'}}>
+          <span style={{fontFamily: 'Roboto', fontSize: '14pt', fontWeight:'bold', color: 'whitesmoke'}}>
+            Possible Chord Names:
+            {chords.slice().reverse().map((chord, index) => (
+              <div key={index}>{chord}</div>
+            ))}
+          </span>
+        </div>
       </div>
-      <div>
-        <span style={{fontWeight:'bold'}}>Possible Chord Names:</span>
-        {chords.slice().reverse().map((chord, index) => (
-          <div key={index}>{chord}</div>
-        ))}
-      </div>
-      
-    
     </div>
   );
 }
