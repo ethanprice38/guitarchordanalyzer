@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+A guitar chord analyzer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+How to Run the Guitar Chord Analyzer Locally:
 
-## Available Scripts
+Prerequisites:
+Install Python (3.8 or later).
+Install Node.js (16.x or later).
+Install a package manager like pip (for Python) and npm (for Node.js).
+Install Git to clone the repository.
 
-In the project directory, you can run:
+Clone the repository, by opening cmd and cloning it into where you desire it to be</br>
+`git clone https://github.com/ethanprice38/guitarchordanalyzer.git`</br>
+Move into the repository on your local system</br>
+`cd ./guitarchordanalyzer`</br>
+Navigate to the backend</br>
+`cd backend`</br>
+Create and activate a venv</br>
+`python -m venv venv`</br>
+`source venv/bin/activate  # On macOS/Linux`</br>
+`venv\Scripts\activate     # On Windows`</br>
+Create a new .txt file named requirements.txt within the ./backend/.venv/Scripts folder, paste the following in it:</br>
+`Flask==3.0.3\ Flask-Cors==4.0.1\ music21==9.1.0\ pychord==1.2.2\ requests==2.32.3`</br>
+Run these two commands while your venv is activated:</br>
+`pip install -r requirements.txt`</br>
+`flask run`</br>
+Navigate to the frontend and run the following commands:</br>
+`cd ./frontend`</br>
+`npm install`</br>
+`npm start`</br>
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Open your browser and go to http://localhost:3000 to interact with the guitar chord analyzer. Enjoy!
