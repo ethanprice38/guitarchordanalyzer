@@ -1,3 +1,5 @@
+A guitar chord analyzer
+
 How to Run the Guitar Chord Analyzer Locally:
 
 Prerequisites:
@@ -27,4 +29,3 @@ npm install
 npm start
 
 Open your browser and go to http://localhost:3000 to interact with the guitar chord analyzer. Enjoy!
-
