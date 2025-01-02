@@ -3,10 +3,11 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pychord import *
 import re
+import os
 
 app = Flask(__name__)
 CORS(app)
-const port = 100
+app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
 chords = {
     'major': [[0, 4, 7]], # 0 is root, 4 is major 3rd, 7 is perfect 5th, 9 is 13th, 10 is dominant 7th, 11 is major 7th,
