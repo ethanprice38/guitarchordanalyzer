@@ -6,6 +6,7 @@ import re
 
 app = Flask(__name__)
 CORS(app)
+const port = 100
 
 chords = {
     'major': [[0, 4, 7]], # 0 is root, 4 is major 3rd, 7 is perfect 5th, 9 is 13th, 10 is dominant 7th, 11 is major 7th,
