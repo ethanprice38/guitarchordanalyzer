@@ -34,7 +34,7 @@ function App() {
   return (
     <div style={{backgroundColor: '#1B1B1B'}}>
       <div className="App">
-        <h1 style={{fontFamily: 'Roboto', color: 'whitesmoke'}}>Guitar Chord Analyzer</h1>
+        <h1 style={{fontFamily: 'Roboto', color: 'whitesmoke'}}>Guitar Chord Analyzer by Ethan Price</h1>
         <div>
           <InteractiveFretboard className="fretboard" onFretboardChanges={handleFretboardChanges}/>
         </div>
