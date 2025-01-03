@@ -48,7 +48,8 @@ function App() {
             ))}
           </span>
           <p style={{ marginTop: '90px', fontFamily: 'Roboto', fontSize: '14pt', fontWeight:'bold', color: 'whitesmoke'}}>
-            Quick Start Guide:
+            IMPORTANT NOTE: This app is hosted on a free service, so it may take 15–60 seconds to start up when idle. Please click on the<br/>fretboard and allow some time for the app to respond before beginning to test chords. Thank you for your patience!
+            <br/>Quick Start Guide:
           </p>
           <p style={{fontFamily: 'Roboto', fontSize: '12pt', color: 'whitesmoke', marginTop: '-10px'}}>
             <ol>
